@@ -64,6 +64,22 @@ def delete_word(id):
             return jsonify(word.id)
         else:
             return jsonify({'message': "No word delete"}), 500
-        return jsonify({})
+        
+    except Exception as ex:
+        return jsonify({'message': str(ex)}), 500
+    
+@main.route('/update/<id>', methods=['PUT'])
+def update_word(id):
+    try:
+        w0rd = request.json['word']
+        accept = request.json['accept']        
+        word = Word(str(id), w0rd, accept)
+        
+        affected_row= WordModel.update_word(word)
+        if affected_row == 1:
+            return jsonify(word.id)
+        else:
+            return jsonify({'message': "No word update"}), 404
+        
     except Exception as ex:
         return jsonify({'message': str(ex)}), 500
