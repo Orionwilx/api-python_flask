@@ -2,3 +2,6 @@
 /instance
 
 *__pycache__
+/db-py_Flask.py
+/mi-api.py
+/pruebas.py
