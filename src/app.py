@@ -1,11 +1,13 @@
 from flask import Flask
-
+from flask_cors import CORS
 from config import config
 
 #routes
 from routes import word
 
 app = Flask(__name__)
+
+CORS(app)
 
 def page_not_found(error):
     return "<h1>Not Fount page<h1>", 404
